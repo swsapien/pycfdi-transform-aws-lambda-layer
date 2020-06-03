@@ -9,7 +9,10 @@ pool:
   container: lambci/lambda:build-python3.8
 
 steps:
-- script: |    
+- script: |
+    pip --version
+    python --version
+    python38 --version    
     pip install -r requirements.txt --target=$(Build.ArtifactStagingDirectory)/python
   displayName: 'install requirements'
 - task: PublishBuildArtifacts@1
