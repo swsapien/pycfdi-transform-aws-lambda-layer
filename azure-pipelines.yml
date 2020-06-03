@@ -32,4 +32,4 @@ steps:
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
     assets: |
-      $(Build.ArtifactStagingDirectory)
+      $(Build.ArtifactStagingDirectory)/**
