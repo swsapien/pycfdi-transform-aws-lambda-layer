@@ -31,3 +31,5 @@ steps:
     tagSource: 'gitTag'
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
+    assets: |
+      $(Build.ArtifactStagingDirectory)
