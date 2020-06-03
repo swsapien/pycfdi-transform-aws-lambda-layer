@@ -4,8 +4,8 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
 trigger:
   tags:
-      include:
-      - v.*
+    include:
+      - v*
 pool:
   vmImage: 'Ubuntu-16.04' 
 
