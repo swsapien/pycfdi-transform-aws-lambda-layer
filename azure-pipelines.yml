@@ -8,16 +8,14 @@ pool:
   vmImage: 'Ubuntu-16.04' 
 
 steps:
-- script: |
-    pip --version
-    python --version
-    python38 --version    
+- script: |    
+    docker run -v "$PWD":/var/task "lambci/lambda:build-python3.7" /bin/sh -c "pip install -r requirements.txt -t python/lib/python3.7/site-packages/; exit"
     docker run -v "$PWD":/var/task "lambci/lambda:build-python3.8" /bin/sh -c "pip install -r requirements.txt -t python/lib/python3.8/site-packages/; exit"
   displayName: 'install requirements'
 - task: CopyFiles@2
   inputs:
     contents: 'python/**'
-    targetFolder: $(Build.ArtifactStagingDirectory)/python
+    targetFolder: $(Build.ArtifactStagingDirectory)
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
