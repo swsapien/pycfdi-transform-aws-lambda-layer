@@ -27,11 +27,10 @@ steps:
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
-    includeRootFolder: true
+    includeRootFolder: false
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/pycfdi-transform-aws-lambda-layer-$(Build.SourceVersion).zip'
     replaceExistingArchive: true
-
 - task: GitHubRelease@1
   inputs:
     gitHubConnection: 'github.com_hermesjimenez'
@@ -42,4 +41,4 @@ steps:
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
     assets: |
-      $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+      $(Build.ArtifactStagingDirectory)/pycfdi-transform-aws-lambda-layer-$(Build.SourceVersion).zip
