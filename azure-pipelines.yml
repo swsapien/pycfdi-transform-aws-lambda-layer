@@ -5,16 +5,19 @@
 trigger:
 - master
 pool:
-  vmImage: 'ubuntu-latest'
-  container: lambci/lambda:build-python3.8
+  vmImage: 'Ubuntu-16.04' 
 
 steps:
 - script: |
     pip --version
     python --version
     python38 --version    
-    pip install -r requirements.txt --target=$(Build.ArtifactStagingDirectory)/python
+    docker run -v "$PWD":/var/task "lambci/lambda:build-python3.8" /bin/sh -c "pip install -r requirements.txt -t python/lib/python3.8/site-packages/; exit"
   displayName: 'install requirements'
+- task: CopyFiles@2
+  inputs:
+    contents: 'python/**'
+    targetFolder: $(Build.ArtifactStagingDirectory)/python
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
