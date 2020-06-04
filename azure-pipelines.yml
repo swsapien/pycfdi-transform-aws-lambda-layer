@@ -60,10 +60,10 @@ stages:
         assets: |
           $(Build.ArtifactStagingDirectory)/pycfdi-transform-aws-lambda-layer-$(Build.SourceVersion).zip
 
-- stage: deploy_aws_layer_release
+- stage: deploy_test_aws_layer_release
   dependsOn: build
   jobs:
-  - job: deploy_aws_layer_release
+  - job: deploy_test_aws_layer_release
     pool:
       vmImage: 'Ubuntu-16.04'
     steps:
