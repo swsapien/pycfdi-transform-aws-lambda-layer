@@ -43,7 +43,7 @@ stages:
         downloadPath: $(Build.ArtifactStagingDirectory)
     - task: ArchiveFiles@2
       inputs:
-        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/dist'
         includeRootFolder: false
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/pycfdi-transform-aws-lambda-layer-$(Build.SourceVersion).zip'
@@ -73,7 +73,7 @@ stages:
         downloadPath: $(Build.ArtifactStagingDirectory)
     - task: ArchiveFiles@2
       inputs:
-        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/dist'
         includeRootFolder: false
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/pycfdi-transform-aws-lambda-layer-$(Build.SourceVersion).zip'
