@@ -81,5 +81,6 @@ stages:
     - task: AWSCLI@1
       inputs:
         regionName: 'us-east-1'
-        awsCommand: 'aws lambda publish-layer-version'
+        awsCommand: 'lambda'
+        awsSubCommand: 'publish-layer-version'
         awsArguments: '--layer-name pycfdi-transform-aws-lambda-layer --description "pycfdi-transform-aws-lambda-layer" --license-info "GNU" --zip-file $(Build.ArtifactStagingDirectory)/pycfdi-transform-aws-lambda-layer-$(Build.SourceVersion).zip --compatible-runtimes python3.7 python3.8'    
