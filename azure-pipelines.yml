@@ -37,10 +37,10 @@ stages:
     pool:
       vmImage: 'Ubuntu-16.04'
     steps:
-    - task: DownloadPipelineArtifact@2
+    - task: DownloadBuildArtifacts@0
       inputs:
-        artifact: dist        
-        path: $(Build.ArtifactStagingDirectory)
+        artifactName: dist        
+        downloadPath: $(Build.ArtifactStagingDirectory)
     - task: ArchiveFiles@2
       inputs:
         rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
