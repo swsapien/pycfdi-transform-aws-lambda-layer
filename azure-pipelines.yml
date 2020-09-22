@@ -86,4 +86,11 @@ stages:
         awsCommand: 'lambda'
         awsSubCommand: 'publish-layer-version'
         awsArguments: '--layer-name pycfdi-transform-aws-lambda-layer --description "pycfdi-transform-aws-lambda-layer" --license-info "GNU" --zip-file fileb://$(Build.ArtifactStagingDirectory)/pycfdi-transform-aws-lambda-layer-$(Build.SourceVersion).zip --compatible-runtimes python3.7 python3.8'
-  
+
+    - task: AWSCLI@1
+      inputs:
+        awsCredentials: 'sw_sapien_aws_prod'
+        regionName: 'us-east-1'
+        awsCommand: 'lambda'
+        awsSubCommand: 'publish-layer-version'
+        awsArguments: '--layer-name pycfdi-transform-aws-lambda-layer --description "pycfdi-transform-aws-lambda-layer" --license-info "GNU" --zip-file fileb://$(Build.ArtifactStagingDirectory)/pycfdi-transform-aws-lambda-layer-$(Build.SourceVersion).zip --compatible-runtimes python3.7 python3.8'
