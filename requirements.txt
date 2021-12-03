@@ -1,1 +1,1 @@
-pycfdi-transform==0.1.1.0rc1
+pycfdi-transform==0.1.1.2rc1
